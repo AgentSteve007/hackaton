@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Чат с искусственным интеллектом CamelCaseGPT">
+    <title>CamelCaseGPT - Чат с ИИ</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="chat-container" role="main">
+        <div class="session-id" id="session-id" aria-live="polite">Сессия: загрузка...</div>
+        
+        <div class="chat-box" id="chat-box" role="log" aria-live="polite">
+            <div class="message bot-message" role="status">
+                Здравствуйте! Я CamelCaseGPT. Чем я могу вам помочь?
+            </div>
+        </div>
+        
+        <div class="input-container" role="form">
+            <textarea 
+                class="input-box" 
+                id="user-input" 
+                placeholder="Задайте вопрос CamelCaseGPT..."
+                aria-label="Поле ввода сообщения"
+                rows="1"
+            ></textarea>
+            <button 
+                id="send-btn" 
+                onclick="sendMessage()" 
+                aria-label="Отправить сообщение"
+                title="Отправить (Enter)"
+            >
+                <span aria-hidden="true">➤</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Подключение скриптов в правильном порядке -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', path='script.js') }}"></script>
+    
+    <!-- Инициализация при загрузке -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('user-input');
+            if (input) {
+                input.focus();
+            }
+        });
+    </script>
+</body>
+</html>
