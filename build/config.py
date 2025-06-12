@@ -1,13 +1,21 @@
 
 from pathlib import Path
 from build.update_yandex_gpt_token import get_yandex_gpt_token
+# config.py
 
-# Пути
+from pathlib import Path
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = PROJECT_ROOT / "data"
-NEW_FILES_DIR = DATA_DIR / "new_files"
-TESTS_DIR = DATA_DIR / "tests"
-LOG_FILE = PROJECT_ROOT / "logs" / "app.log"
+RAG_DATA_PATH = PROJECT_ROOT / "rag" / "data"
+CHROMA_DB_PATH = RAG_DATA_PATH / "chroma_db"
+PREPARED_DATA_PATH = RAG_DATA_PATH / "prepared"
+NEW_DATA_PATH = RAG_DATA_PATH / "new_files"
+CHROMA_COLLECTION_NAME = "default"
+
+CHUNKER_MODEL_NAME = "BAAI/bge-m3"
+DEFAULT_SIMILARITY_TOP_K = 5
+DEFAULT_MIN_SCORE = 0.3
+SEMANTIC_SPLITTER_BUFFER_SIZE = 2
 
 # Модель
 YANDEX_GPT_TOKEN = get_yandex_gpt_token()
