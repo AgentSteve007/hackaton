@@ -1,7 +1,24 @@
 
+from pathlib import Path
 from build.update_yandex_gpt_token import get_yandex_gpt_token
 
+# Пути
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = PROJECT_ROOT / "data"
+NEW_FILES_DIR = DATA_DIR / "new_files"
+TESTS_DIR = DATA_DIR / "tests"
+LOG_FILE = PROJECT_ROOT / "logs" / "app.log"
+
+# Модель
 YANDEX_GPT_TOKEN = get_yandex_gpt_token()
+YANDEX_GPT_MODEL = "yandexgpt-lite"
+YANDEX_TEMPERATURE = 0.2
+YANDEX_TOP_P = 0.9
+
+# Chunker
+CHUNK_SIZE = 300
+CHUNK_OVERLAP = 30
+VECTOR_DB_PATH = PROJECT_ROOT / "vector_store" / "db.json"
 
 EN_ANSWER_WITH_DOCUMENTATION = (
     "Always follow the ruleset.\n"
