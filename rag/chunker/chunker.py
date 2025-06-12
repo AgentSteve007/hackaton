@@ -14,8 +14,8 @@ class Chunker:
         self.vector_store = None
         self.chroma_collection = None
         self.storage_context = None
-        self.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-m3")
-        self.retrieval_engine = None
+        self.embed_model = HuggingFaceEmbedding(model_name=CHUNKER_MODEL_NAME)
+        self.data_path = RAG_DATA_PATH
         self.path = path
         self.data_path = os.path.join(path, "rag", "data")
         self.prepared_data_path = os.path.join(self.data_path, "prepared")
